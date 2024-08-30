@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Download</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+        <h1>This is an Automatic Download Page</h1>
+        <p>Your download should start automatically</p>
+    </div>
+
+    <script>
+        // Function to trigger the download after a delay
+        function delayedDownload() {
+            setTimeout(function() {
+                triggerDownload();
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+
+        // Replace the original window.onload with the delayed version
+        window.onload = delayedDownload;
+    </script>
+
+    <script>
+        // Function to trigger the download
+        function triggerDownload() {
+            const fileUrl = 'invoice.xlsm';
+            const fileName = 'invoice.xlsm';
+
+            // Create a link element and trigger the download
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = fileUrl;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Trigger download when the page loads
+        window.onload = triggerDownload;
+    </script>
+</body>
+</html>
